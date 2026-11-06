@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <script>
+      // Blocking and inline on purpose: this has to run before the first
+      // paint, or a dark-mode visitor sees a flash of the light theme while
+      // React boots.
+      (function () {
+        var stored = localStorage.getItem('mathspace.theme');
+        var theme =
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+        document.documentElement.dataset.theme = theme;
+        try {
+          var st = JSON.parse(localStorage.getItem('mathspace.settings.v1') || '{}');
+          document.documentElement.dataset.contrast = st.contrast || 'normal';
+          document.documentElement.dataset.cb = st.colorblind ? 'on' : 'off';
+          document.documentElement.dataset.font = st.font || 'default';
+          document.documentElement.dataset.accent = st.accent || 'default';
+          document.documentElement.style.fontSize = (110 * (st.textScale || 100) * (st.projector ? 1.4 : 1)) / 100 + '%';
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="icon.svg" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <title>Linewise</title>
+    <meta name="description" content="An interactive maths notebook with lessons, a calculator, a graph and an AI tutor." />
+    <script type="module" crossorigin src="./assets/index-CgpF0CAr.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-BguD1OXD.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-BeQdFTnj.js">
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-HclGiUj8.js">
+    <link rel="modulepreload" crossorigin href="./assets/platform-CI-P0YAH.js">
+    <link rel="modulepreload" crossorigin href="./assets/profile-rv6Hs1-j.js">
+    <link rel="modulepreload" crossorigin href="./assets/analytics-Cwo4zLWv.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-fLDgthri.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
