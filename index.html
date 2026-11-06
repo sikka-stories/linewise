@@ -31,16 +31,38 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <title>Linewise</title>
     <meta name="description" content="An interactive maths notebook with lessons, a calculator, a graph and an AI tutor." />
-    <script type="module" crossorigin src="./assets/index-CgpF0CAr.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-BguD1OXD.js">
-    <link rel="modulepreload" crossorigin href="./assets/react-BeQdFTnj.js">
-    <link rel="modulepreload" crossorigin href="./assets/preload-helper-HclGiUj8.js">
-    <link rel="modulepreload" crossorigin href="./assets/platform-CI-P0YAH.js">
-    <link rel="modulepreload" crossorigin href="./assets/profile-rv6Hs1-j.js">
-    <link rel="modulepreload" crossorigin href="./assets/analytics-Cwo4zLWv.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-fLDgthri.css">
+    <script type="module" crossorigin src="./assets/index-Di5RAU_A.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-BpQH8Ho1.js">
+    <link rel="modulepreload" crossorigin href="./assets/content-3y9icUkX.js">
+    <link rel="modulepreload" crossorigin href="./assets/pages-1Vt73eQG.js">
+    <link rel="modulepreload" crossorigin href="./assets/vendor-C5JLYgO1.js">
+    <link rel="modulepreload" crossorigin href="./assets/katex-dlQF10cO.js">
+    <link rel="stylesheet" crossorigin href="./assets/vendor-CncU23_c.css">
+    <link rel="stylesheet" crossorigin href="./assets/katex-CUAWePv0.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-By9tbkWK.css">
   </head>
   <body>
     <div id="root"></div>
+    <!-- Never a blank page: if the app cannot start, say why. Plain script, so it runs even where the app's own code cannot. -->
+    <div id="boot-help" hidden style="max-width:34rem;margin:15vh auto;padding:0 1.25rem;font:17px/1.6 Georgia,serif;color:#16191B">
+      <h1 style="font-size:1.6rem;margin:0 0 .75rem">Linewise could not start</h1>
+      <p id="boot-why" style="margin:0 0 .75rem"></p>
+    </div>
+    <script>
+      (function () {
+        var show = function (why) {
+          if (document.getElementById('root').childElementCount) return;
+          document.getElementById('boot-why').textContent = why;
+          document.getElementById('boot-help').hidden = false;
+        };
+        if (location.protocol === 'file:') {
+          show('This file was opened straight from your computer, and browsers do not let an app like this run that way. Open it from its web address instead, such as your GitHub Pages link.');
+          return;
+        }
+        setTimeout(function () {
+          show('Part of the app did not load. Check your connection and reload the page. If you put this site up yourself, make sure every file was uploaded, including the whole assets folder.');
+        }, 12000);
+      })();
+    </script>
   </body>
 </html>
